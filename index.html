@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <center>
+		<nav text-align="center">
+			<div class="relogio">
+				<div id="clock" style="display: none;">00:00:00</div>
+				<div id="textostatus"></div>
+	
+				<script>
+					var relogio = document.getElementById('clock');
+					var statusRelogio = document.getElementById('textostatus');
+					function manipularRelogio() {
+						var hoje = new Date();
+	
+						var horas = hoje.getHours();
+						if (horas < 10) {
+							horas = "0" + horas;
+						}
+	
+						var minutos = hoje.getMinutes();
+						if (minutos < 10) {
+							minutos = "0" + minutos;
+						}
+	
+						var segundos = hoje.getSeconds();
+						if (segundos < 10) {
+							segundos = "0" + segundos;
+						}
+	
+						if (horas >= "12" && horas <= "13") {
+							relogio.style.color = "yellow";
+							statusRelogio.innerHTML = "&#9832;";
+							statusRelogio.style.color = "yellow";
+							statusRelogio.style.fontSize = "24pt";
+						}
+	
+						if (horas >= "18" || horas <= "07") {
+							relogio.style.color = "red";
+							statusRelogio.innerHTML = "Fechado";
+							statusRelogio.style.color = "red";
+							statusRelogio.style.fontSize = "24pt";
+						}
+	
+						if ((horas > "07" && horas < "12") || (horas > "13" && horas < "18")) {
+							relogio.style.color = "#31e84c";
+							statusRelogio.innerHTML = "Aberto";
+							statusRelogio.style.color = "#31e84c";
+							statusRelogio.style.fontSize = "24pt";
+						}
+	
+						var dia = hoje.getDay();
+						if (dia == 6 || dia == 7) { /*Aqui pode escolher os dias da semana para ser aberto ou fechado*/
+							relogio.style.color = "red";
+							statusRelogio.innerHTML = "Fechado";
+							statusRelogio.style.color = "red";
+						}
+	
+						relogio.innerHTML = horas + ":" + minutos + ":" + segundos;
+					}
+					window.setInterval("manipularRelogio()", 1000);
+				</script>
+			</div>
+		</nav>
+	</center>
+  <script src="script.js"></script>
+</body>
+
+</html>
